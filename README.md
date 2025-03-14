@@ -9,7 +9,7 @@ how to
 - ```npm run start```
 
 To build dmg
-- ```npm package```
+- ```npm run package```
 
 It takes a minute to start the thing.
 Not sure why!
