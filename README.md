@@ -1,2 +1,15 @@
 # enturbar
-Menu bar for Entur
+
+![img.png](img.png)
+
+how to
+------
+
+- ```npm i```
+- ```npm run start```
+
+To build dmg
+- ```npm package```
+
+It takes a minute to start the thing.
+Not sure why!

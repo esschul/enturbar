@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Legg til rute</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #f9f9f9;
+    }
+
+    h3 {
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    ul li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    ul li:hover {
+      background-color: #f0f0f0;
+    }
+
+    #add-route-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      transition: background-color 0.2s;
+    }
+
+    #add-route-btn:hover {
+      background-color: #218838;
+    }
+
+    #save-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      margin-top: 10px;
+    }
+
+    #save-btn:hover {
+      background-color: #0056b3;
+    }
+
+    #message {
+      margin-top: 10px;
+      font-size: 14px;
+      color: green;
+      text-align: center;
+      height: 18px;
+    }
+
+    .error {
+      color: red;
+    }
+
+    #route-form {
+      display: none; /* hidden until add button clicked */
+    }
+  </style>
+</head>
+<body>
+<h3>EnturBar - Legg til rute</h3>
+
+<!-- Button to show the form -->
+<button id="add-route-btn">Legg til ny rute</button>
+
+<!-- Route form -->
+<div id="route-form">
+  <div>
+    <label for="from-input">Fra:</label>
+    <input type="text" id="from-input" placeholder="Søk fra...">
+    <ul id="from-suggestions"></ul>
+  </div>
+
+  <div>
+    <label for="to-input">Til:</label>
+    <input type="text" id="to-input" placeholder="Søk til...">
+    <ul id="to-suggestions"></ul>
+  </div>
+
+  <button id="save-btn">Lagre rute</button>
+</div>
+
+<!-- Message box -->
+<div id="message"></div>
+
+<!-- Renderer JS -->
+<script src="./renderer.js"></script>
+</body>
+</html>

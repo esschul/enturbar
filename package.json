@@ -1,0 +1,22 @@
+{
+  "name": "enturbar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-packager . EnturBar --platform=darwin --arch=x64 --electron-version=32.3.3 --overwrite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.8.3",
+    "electron-store": "^8.2.0",
+    "menubar": "^9.5.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "electron-packager": "^17.1.2"
+  }
+}
