@@ -5,12 +5,12 @@
 how to
 ------
 
-To run it
+**To run it**
 
 - ```npm i```
 - ```npm run start```
 
-To build dmg
+**To build dmg**
 - ```npm run package```
 
 It takes a minute to start the thing.
