@@ -5,6 +5,8 @@
 how to
 ------
 
+To run it
+
 - ```npm i```
 - ```npm run start```
 
