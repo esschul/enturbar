@@ -13,3 +13,6 @@ To build dmg
 
 It takes a minute to start the thing.
 Not sure why!
+
+
+Oh yes, there will be a little 🔥 flame emoji next to the train if there is a delay.
