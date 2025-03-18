@@ -5,8 +5,8 @@
 
 Install file for mac (apple silicon) can be found here: <a href="https://github.com/esschul/enturbar/releases/tag/v.1.0.0">https://github.com/esschul/enturbar/releases/tag/v.1.0.0</a>
 
-
-
+Source of the data is from Entur ❤️
+https://developer.entur.org/pages-journeyplanner-journeyplanner
 
 
 
@@ -31,7 +31,3 @@ How it works:
 
 - After you've added it, it will check the route every minute.
 - If there is a delay, there will be a little 🔥 flame emoji next to the train
-
-
-Source of the data is from Entur! A round of applause to Entur.
-https://developer.entur.org/pages-journeyplanner-journeyplanner
