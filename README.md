@@ -32,3 +32,6 @@ How it works:
 - After you've added it, it will check the route every minute.
 - If there is a delay, there will be a little 🔥 flame emoji next to the train
 
+
+Source of the data is from Entur! A round of applause to Entur.
+https://developer.entur.org/pages-journeyplanner-journeyplanner
