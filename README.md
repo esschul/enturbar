@@ -2,7 +2,15 @@
 
 ![img.png](img.png)
 
-how to
+
+Install file for mac (apple silicon) can be found here: <a href="https://github.com/esschul/enturbar/releases/tag/v.1.0.0">https://github.com/esschul/enturbar/releases/tag/v.1.0.0</a>
+
+
+
+
+
+
+how to:
 ------
 
 **To run it**
@@ -24,4 +32,3 @@ How it works:
 - After you've added it, it will check the route every minute.
 - If there is a delay, there will be a little 🔥 flame emoji next to the train
 
-Install file for mac (apple silicon) can be found here: <a href="https://github.com/esschul/enturbar/releases/tag/v.1.0.0">https://github.com/esschul/enturbar/releases/tag/v.1.0.0</a>
