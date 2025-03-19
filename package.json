@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "package": "electron-packager . EnturBar --platform=darwin --arch=x64 --electron-version=32.3.3 --overwrite"
+    "pack-mac": "npx electron-builder --mac",
+    "pack-linux": "npx electron-builder --linux",
+    "pack-windows": "npx electron-builder --win"
   },
   "build": {
     "appId": "no.esschul.enturbar",
@@ -25,6 +27,6 @@
     "uuid": "^11.1.0"
   },
   "devDependencies": {
-    "electron-packager": "^17.1.2"
+    "electron-builder": "^25.1.8"
   }
 }
