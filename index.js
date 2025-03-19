@@ -6,7 +6,7 @@ const path = require('path');
 
 const store = new Store();
 
-let shouldShowWindow = false; // 🔑 Controls whether we allow the window to appear
+let shouldShowWindow = false;
 
 const mb = menubar({
     browserWindow: {
@@ -23,7 +23,6 @@ const mb = menubar({
     icon: path.join(__dirname, 'assets/train.png')
 });
 
-// Crash handlers for debugging
 process.on('uncaughtException', (err) => {
     console.error('❗ Uncaught Exception:', err);
 });
@@ -41,7 +40,6 @@ app.on('window-all-closed', () => {
     // Prevent quitting!
 });
 
-// ✅ MENUBAR READY
 mb.on('ready', () => {
     console.log('✅ Menubar app is ready');
 
@@ -60,7 +58,6 @@ mb.on('ready', () => {
     });
 });
 
-// ✅ CREATE-WINDOW event
 mb.on('create-window', () => {
     console.log('⚠️ create-window triggered');
 
@@ -72,13 +69,10 @@ mb.on('create-window', () => {
     shouldShowWindow = false; // Reset flag after window is created
 });
 
-// ✅ AFTER-CREATE-WINDOW event (optional for debug)
 mb.on('after-create-window', () => {
     console.log('✅ after-create-window');
-    // mb.window.webContents.openDevTools({ mode: 'detach' }); // Uncomment for debug
 });
 
-// ✅ BUILD CONTEXT MENU
 function buildContextMenu() {
     if (!mb.tray) {
         console.warn('⚠️ Tray not ready. Skipping context menu build.');
@@ -122,7 +116,7 @@ function buildContextMenu() {
             label: 'Legg til rute...',
             click: () => {
                 console.log('🟢 Legg til rute clicked');
-                shouldShowWindow = true; // ✅ Signal that we expect to show the window
+                shouldShowWindow = true;
 
                 if (!mb.window) {
                     console.warn('⚠️ No browser window ready yet');
@@ -154,7 +148,6 @@ function buildContextMenu() {
     mb.tray.setContextMenu(contextMenu);
 }
 
-// ✅ CLEAR ROUTES
 function clearAllRoutes() {
     console.log('🗑️ Clearing all routes');
     store.delete('stopsArray');
@@ -165,7 +158,6 @@ function clearAllRoutes() {
     });
 }
 
-// ✅ IPC ADD ROUTE
 ipcMain.on('add-stop-pair', (event, fromStop, toStop) => {
     try {
         console.log('📥 Received add-stop-pair event');
@@ -206,7 +198,6 @@ ipcMain.on('add-stop-pair', (event, fromStop, toStop) => {
     }
 });
 
-// ✅ FETCH NEXT TRAIN
 async function fetchNextTrain() {
     const stopsArray = store.get('stopsArray');
     const activePairId = store.get('activePairId');
@@ -304,7 +295,6 @@ async function fetchNextTrain() {
     }
 }
 
-// ✅ FORMAT TIME
 function formatTime(isoString) {
     const date = new Date(isoString);
     const hours = date.getHours().toString().padStart(2, '0');
