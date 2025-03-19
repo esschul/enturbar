@@ -6,6 +6,14 @@
     "start": "electron .",
     "package": "electron-packager . EnturBar --platform=darwin --arch=x64 --electron-version=32.3.3 --overwrite"
   },
+  "build": {
+    "appId": "no.esschul.enturbar",
+    "productName": "EnturBar",
+    "mac": {
+      "category": "public.app-category.utilities",
+      "icon": "build/icon.icns"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

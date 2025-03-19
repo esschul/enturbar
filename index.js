@@ -266,7 +266,10 @@ async function fetchNextTrain() {
 
     try {
         const response = await axios.post(url, { query }, {
-            headers: { 'Content-Type': 'application/json' }
+            headers: {
+                'Content-Type': 'application/json',
+                'ET-Client-Name': 'esschul-enturbar'
+            }
         });
 
         const json = response.data;
