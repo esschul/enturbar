@@ -1,6 +1,6 @@
 <img alt="det går ofte et tog" width="500" src="https://github.com/user-attachments/assets/b3d8ba15-bcd1-480f-b72e-9cdc0996d9d1"/>
 <br/><br/>
-<a href="https://github.com/esschul/enturbar/releases/tag/v.1.0.0">Last ned siste versjon her for Apple her.</a>
+<a href="https://github.com/esschul/enturbar/releases/tag/v.1.0.1">Last ned siste versjon her for Apple her.</a>
 <br/><br/>
 
 ### Takk til <a href="https://developer.entur.org/pages-journeyplanner-journeyplanner">Entur</a> for data ❤️
