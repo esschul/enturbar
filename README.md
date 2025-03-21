@@ -15,7 +15,7 @@ Sånn her ser det ut:
 <br/>
 <br/>
 
-### Bittelitt teknisk dokumentasjon
+### Bittelitt teknisk dokumentasjon til de som ønsker å kode på denne hjemme
 
 #### På forkant kan det være greit å ha noe sånt installert:
 ***Node.js >= 18***
