@@ -37,7 +37,7 @@ app.on('before-quit', () => {
 
 app.on('window-all-closed', () => {
     console.log('🚪 All windows closed! (Not quitting automatically)');
-    // Prevent quitting!
+
 });
 
 mb.on('ready', () => {
@@ -66,7 +66,7 @@ mb.on('create-window', () => {
         mb.hideWindow();
     }
 
-    shouldShowWindow = false; // Reset flag after window is created
+    shouldShowWindow = false;
 });
 
 mb.on('after-create-window', () => {
@@ -229,29 +229,34 @@ async function fetchNextTrain() {
     console.log(`🚄 Fetching trip from ${fromId} to ${toId}`);
 
     const query = `
-  {
-    trip(
-      from: { place: "${fromId}" },
-      to: { place: "${toId}" }
-    ) {
-      tripPatterns {
-        duration
-        walkDistance
-        legs {
-          expectedStartTime
-          expectedEndTime
-          aimedStartTime
-          distance
-          mode
-          line {
-            id
-            publicCode
+    {
+      trip(
+        from: { place: "${fromId}" },
+        to: { place: "${toId}" }
+      ) {
+        tripPatterns {
+          duration
+          walkDistance
+          legs {
+            expectedStartTime
+            expectedEndTime
+            aimedStartTime
+            distance
+            mode
+            situations {
+              summary {
+                value
+              }
+            }
+            line {
+              id
+              publicCode
+            }
           }
         }
       }
     }
-  }
-  `;
+    `;
 
     const url = 'https://api.entur.io/journey-planner/v3/graphql';
 
@@ -278,22 +283,41 @@ async function fetchNextTrain() {
             const delayMs = expectedStart - aimedStart;
             const delayMinutes = Math.round(delayMs / 60000);
 
-            const indicator = delayMinutes > 1 ? '🔥 ' : '';
+            const delayIndicator = delayMinutes > 1 ? '🔥 ' : '';
 
-            const displayText = `${indicator}${line} : ${startTime} - ${endTime}`;
+            const situations = firstLeg.situations || [];
+
+            const hasFewerSituation = situations.some(situation => {
+                const summaries = situation.summary || [];
+                return summaries.some(summary =>
+                    summary.value?.toLowerCase().includes('fewer')
+                );
+            });
+
+            if (hasFewerSituation) {
+                console.log('⚠️ Situation found containing "fewer"');
+                mb.tray?.setImage(path.join(__dirname, 'assets/train-few.png'));
+            } else {
+                mb.tray?.setImage(path.join(__dirname, 'assets/train-many.png'));
+            }
+
+            const displayText = `${delayIndicator}${line} : ${startTime} - ${endTime}`;
 
             console.log(`🚉 Next train: ${displayText}`);
 
             mb.tray?.setTitle(displayText);
         } else {
             mb.tray?.setTitle('Ingen avganger');
+            mb.tray?.setImage(path.join(__dirname, 'assets/train-many.png'));
         }
 
     } catch (error) {
         console.error('❌ Error fetching train data:', error);
         mb.tray?.setTitle('Feil ved henting');
+        mb.tray?.setImage(path.join(__dirname, 'assets/train-many.png'));
     }
 }
+
 
 function formatTime(isoString) {
     const date = new Date(isoString);
