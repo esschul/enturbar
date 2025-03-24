@@ -2,7 +2,7 @@
 <br/><br/>
 Last ned siste versjon her for Apple her:
 <br/><br/>
-https://github.com/esschul/enturbar/releases/tag/v1.0.1
+https://github.com/esschul/enturbar/releases/tag/v1.0.2
 <br/><br/>
 
 ### Takk til <a href="https://developer.entur.org/pages-journeyplanner-journeyplanner">Entur</a> for data ❤️
