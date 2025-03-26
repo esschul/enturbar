@@ -128,6 +128,13 @@ function buildContextMenu() {
             }
         },
         {
+            label: 'Fjern rute...',
+            click: () => {
+                console.log('🗑️ Fjern rute clicked');
+                clearSingleRoute();
+            }
+        },
+        {
             label: 'Fjern alle ruter',
             click: () => {
                 console.log('🗑️ Fjern alle ruter clicked');
@@ -156,6 +163,30 @@ function clearAllRoutes() {
     setImmediate(() => {
         buildContextMenu();
     });
+}
+
+function clearSingleRoute() {
+    const stopsArray = store.get("stopsArray") || [];
+    if (stopsArray.length === 0) {
+        console.log("⚠️ No routes to clear");
+        return;
+    }
+
+    const routeItems = stopsArray.map(pair => ({
+        label: `${pair.from.name} → ${pair.to.name}`,
+        click: () => {
+            console.log(`🗑️ Deleting route: ${pair.from.name} → ${pair.to.name}`);
+            const updatedStopsArray = stopsArray.filter(p => p.id !== pair.id);
+            store.set('stopsArray', updatedStopsArray);
+            if (store.get('activePairId') === pair.id || store.get('activePairId') === `flipped-${pair.id}`) {
+                store.delete('activePairId');
+            }
+            buildContextMenu();
+        }
+    }));
+
+    const contextMenu = Menu.buildFromTemplate(routeItems);
+    mb.tray.popUpContextMenu(contextMenu);
 }
 
 ipcMain.on('add-stop-pair', (event, fromStop, toStop) => {
